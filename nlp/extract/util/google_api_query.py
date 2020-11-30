@@ -20,7 +20,7 @@ def get_urls(keyword, num, country='?', site='all'):
         additional_res+='&siteSearch='+site+'&siteSearchFilter=i'
     #  key is my charged key
     for i in range(0,num):
-        baseurls.append('https://www.googleapis.com/customsearch/v1?key=AIzaSyB8-VqulJrba21k2r5ehgsa03vw8OHxET4&cx=8689776d4e95967fb&q='+keyword+'&dateRestrict=m'+str(i)+'&filter=1&sort=date:a&cr='+country+additional_res)
+        baseurls.append('https://www.googleapis.com/customsearch/v1?key=?&cx=8689776d4e95967fb&q='+keyword+'&dateRestrict=m'+str(i)+'&filter=1&sort=date:a&cr='+country+additional_res)
     return baseurls
 
 
