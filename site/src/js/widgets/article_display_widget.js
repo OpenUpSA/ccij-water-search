@@ -69,6 +69,7 @@ export default class ArticleDisplayWidget extends Observable {
                 $('.article-image', elArticleBlock).css('background-image', `url(${el.image}`);
 
             $(elArticleBlock).attr('href', el.url);
+            $(elArticleBlock).attr('target', "_blank");
 
             $(elArticleBlock).removeClass("hidden")
         })
