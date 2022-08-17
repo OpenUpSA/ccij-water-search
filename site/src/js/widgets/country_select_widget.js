@@ -39,6 +39,7 @@ export default class CountrySelectWidget extends Observable {
                 $('.dropdown-link', elDropdownCountries).removeClass('active');
                 $(ev.target).addClass('active');
                 const country = ev.target.text;
+                $(".selected_country").text(country)
                 this.triggerEvent('countryselectwidget.select', country);
             })
         })
