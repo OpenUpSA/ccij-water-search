@@ -1,4 +1,4 @@
-import data from '../data/sa_filtered.json'
+import data from '../data/africa_db.json'
 import lottie from '../documents/lottieflow-scrolling-05-2-66aaf8-easey.json';
 
 import PagerWidget from './widgets/pager_widget';
