@@ -1,6 +1,8 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  --><!--  Last Published: Tue Aug 23 2022 09:06:15 GMT+0000 (Coordinated Universal Time)  --><html data-wf-page="5f3b719c55e07480ab510243" data-wf-site="5f3a3c5c4d04ca6c107e7afe"><head>
+<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  --><!--  Last Published: Tue Aug 23 2022 09:06:15 GMT+0000 (Coordinated Universal Time)  --><html data-wf-page="5f44df48d6b8114ea89f1eb4" data-wf-site="5f3a3c5c4d04ca6c107e7afe"><head>
   <meta charset="utf-8">
-  <title>OSISA Waterworld Search</title>
+  <title>Home - Map</title>
+  <meta content="Home - Map" property="og:title">
+  <meta content="Home - Map" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -19,7 +21,7 @@
 </head>
 <body>
   <div class="feedback__wrapper">
-    <div data-w-id="d8f66561-e7d0-33b9-8b92-483975f7cd9d" style="opacity:0;-webkit-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);display:none" class="feedback">
+    <div data-w-id="d8f66561-e7d0-33b9-8b92-483975f7cd9d" class="feedback">
       <div id="feedback-positive" class="feedback-button feedback-button--positive">
         <div class="feedback-text">This tool is useful</div>
         <div class="fas fa-thumbs-up"></div>
@@ -54,11 +56,8 @@
     </div>
   </div>
   <div class="section section--hero">
+    <div class="map"><img src="images/world.svg" loading="lazy" alt="" class="image"></div>
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">Start exploring African water stories</h1>
-        <div class="hero-subtitle">Type a search term or add a filter to what's already showing...</div>
-      </div>
       <div class="hero-search">
         <div id="article-search" class="article-search__wrapper w-form">
           <form id="wf-form-Article-Search" name="wf-form-Article-Search" data-name="Article Search" method="get" class="article-search"><input type="text" class="search__bar w-input" autofocus="true" maxlength="256" name="field" data-name="Field" placeholder="Over 800 articles to explore..." id="search">
@@ -79,12 +78,13 @@
           </div>
         </div>
       </div>
+      <div class="hero-topics"></div>
     </div>
   </div>
   <div class="section section--bg section--last">
     <div class="container">
       <div class="filters__wrapper">
-        <div id="w-node-b196943b-47a0-82cc-18d5-a7d02a662996-ab510243" class="filter__wrapper">
+        <div id="w-node-b196943b-47a0-82cc-18d5-a7d02a662996-a89f1eb4" class="filter__wrapper">
           <div class="label">Filter by country:</div>
           <div data-hover="false" data-delay="0" class="dropdown-menu country-filter w-dropdown">
             <div class="dropdown-toggle w-dropdown-toggle">
@@ -101,7 +101,7 @@
             </nav>
           </div>
         </div>
-        <div id="w-node-b909723e-95e7-408d-36d0-9aec25cb5fe8-ab510243" class="filter__wrapper">
+        <div id="w-node-b909723e-95e7-408d-36d0-9aec25cb5fe8-a89f1eb4" class="filter__wrapper">
           <div class="label">Filter by topic:</div>
           <div class="filter-button__wrapper">
             <a href="#" class="filter-button w-inline-block">
@@ -118,7 +118,7 @@
             </a>
           </div>
         </div>
-        <div id="w-node-_9fd13d46-173e-c4bb-6df2-a8686436cf3c-ab510243" class="filter__sorting_wrapper">
+        <div id="w-node-_9fd13d46-173e-c4bb-6df2-a8686436cf3c-a89f1eb4" class="filter__sorting_wrapper">
           <div class="filter__value">
             <div class="label clear">Showing: <span class="filter-value"><strong>0</strong></span><strong> articles</strong></div>
           </div>
@@ -144,13 +144,13 @@
       </div>
       <div class="articles-loading__wrapper">
         <div class="article-loading">
-          <div style="-webkit-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="articles-loading__grad"></div>
+          <div class="articles-loading__grad"></div>
         </div>
         <div class="article-loading">
-          <div style="-webkit-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="articles-loading__grad"></div>
+          <div class="articles-loading__grad"></div>
         </div>
         <div class="article-loading">
-          <div style="-webkit-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="articles-loading__grad"></div>
+          <div class="articles-loading__grad"></div>
         </div>
       </div>
       <div class="articles__wrapper hidden">
@@ -175,8 +175,8 @@
       </div>
       <div class="pagination__wrapper">
         <div class="pagination-inner">
-          <a id="w-node-_0c1ef0c3-861d-afe0-da21-209137d78293-ab510243" href="#" class="pagination-button pagination-button--disabled">Previous page</a>
-          <div id="w-node-_41d8a91e-0135-e7d9-50c5-0f88b1f94438-ab510243" class="pagination-numbers__wrapper hidden">
+          <a id="w-node-_0c1ef0c3-861d-afe0-da21-209137d78293-a89f1eb4" href="#" class="pagination-button pagination-button--disabled">Previous page</a>
+          <div id="w-node-_41d8a91e-0135-e7d9-50c5-0f88b1f94438-a89f1eb4" class="pagination-numbers__wrapper hidden">
             <a href="#" class="pagination__page-value pagination__page-value--first">1</a>
             <div class="pagination__page-links__wrapper">
               <div class="pagination__dots">...</div>
@@ -189,7 +189,7 @@
             </div>
             <a href="#" class="pagination__page-value pagination__page-value--last">44</a>
           </div>
-          <a id="w-node-e17e714a-f95b-4e6b-6f8a-160a4f7de596-ab510243" href="#" class="pagination-button pagination-button--disabled">Next page</a>
+          <a id="w-node-e17e714a-f95b-4e6b-6f8a-160a4f7de596-a89f1eb4" href="#" class="pagination-button pagination-button--disabled">Next page</a>
         </div>
       </div>
       <div class="hidden w-dyn-list">
@@ -243,11 +243,11 @@
   <div class="footer">
     <div class="container">
       <div class="w-layout-grid footer-grid">
-        <div id="w-node-c4edc73a-82c1-7f09-4abd-b090edba82e0-ab510243" class="footer-column">
+        <div id="w-node-c4edc73a-82c1-7f09-4abd-b090edba82e0-a89f1eb4" class="footer-column">
           <h1 class="footer-lgoo"><span class="text--primary">WATER</span><br>WORLD</h1>
         </div>
         <div class="footer-column">
-          <div class="footer-logos"><img src="images/ccij-logo-black.png" srcset="images/ccij-logo-black-p-500.png 500w, images/ccij-logo-black.png 730w" sizes="100vw" alt="" class="footer-logo ccij"><img src="images/openup-logo-white.svg" alt="" class="footer-logo openup"></div>
+          <div class="footer-logos"><img src="images/ccij-logo-black.png" srcset="images/ccij-logo-black-p-500.png 500w, images/ccij-logo-black.png 730w" sizes="(max-width: 479px) 52vw, 248.859375px" alt="" class="footer-logo ccij"><img src="images/openup-logo-white.svg" alt="" class="footer-logo openup"></div>
           <p class="footer-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
         </div>
       </div>
