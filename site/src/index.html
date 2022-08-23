@@ -21,6 +21,15 @@
   <script src="https://kit.fontawesome.com/95e41092af.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8S3WM5GYW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G8S3WM5GYW');
+  </script>
   <div data-w-id="d8f66561-e7d0-33b9-8b92-483975f7cd9d" style="opacity:0;-webkit-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);display:none" class="feedback">
     <div id="feedback-positive" class="feedback-button feedback-button--positive">
       <div class="feedback-text">This tool is useful</div>
@@ -243,14 +252,14 @@ border-radius:3px;
   <script>
 document.addEventListener('DOMContentLoaded', ()=>{
  document.querySelectorAll('.filter-button').forEach(trigger => {
-  trigger.addEventListener('click', function(){ 
-    this.x = ((this.x || 0) + 1)%2; 
-    if(this.x){ 
+  trigger.addEventListener('click', function(){
+    this.x = ((this.x || 0) + 1)%2;
+    if(this.x){
       document.querySelectorAll('.filter-button').forEach(target => target.classList.add('active'));
     }
-    else{ 
+    else{
       document.querySelectorAll('.filter-button').forEach(target => target.classList.remove('active'));
-    } 
+    }
   });
  });
 });
