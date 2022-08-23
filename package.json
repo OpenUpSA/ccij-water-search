@@ -1,0 +1,21 @@
+{
+  "name": "ccij-water-search",
+  "version": "1.0.0",
+  "repository": "git@github.com:OpenUpSA/ccij-water-search.git",
+  "license": "MIT",
+  "private": false,
+  "importWebflowExport": {
+    "copyTrees": {
+      "css": "site/src/css",
+      "js": "site/src/js",
+      "images": "site/src/images"
+    },
+    "importHtml": [
+      {
+        "glob": "*.html",
+        "destDir": "site/src",
+        "transforms": "./site/src/js/webflow/import.js"
+      }
+    ]
+  }
+}
