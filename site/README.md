@@ -17,5 +17,3 @@ The project is split into two directories;
 To update client side portions of the static website e.g. to add new UI, pages etc. edit non-data `/site` files .e.g `/site/src/index.html`. 
 
 To run it locally run `yarn start` in the `/site` directory and then go to `http://localhost:1234`
-
-Data files should not be updated manually in `/site` as the `/nlp` scripts may overwrite any changes you make.
