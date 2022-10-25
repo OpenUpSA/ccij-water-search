@@ -6,6 +6,7 @@ import SearchWidget from './widgets/search_widget';
 import CountrySelectWidget from './widgets/country_select_widget';
 import ArticleDisplayWidget from './widgets/article_display_widget';
 import FeedbackWidget from './widgets/feedback_widget';
+import DateRangePickerWidget from './widgets/date_picker_widget';
 
 import Analytics from './analytics';
 import Search from './search';
@@ -16,7 +17,8 @@ const pageSize = 18;
 const state = {
     country: null,
     query: "",
-    pager: null
+    pager: null,
+    date_ranges:null,
 }
 
 
@@ -27,6 +29,7 @@ const searchWidget = new SearchWidget();
 const countrySelectWidget = new CountrySelectWidget(data);
 const feedbackWidget = new FeedbackWidget();
 const articleDisplayWidget = new ArticleDisplayWidget(pageSize);
+const dateRangePickerWidget = new DateRangePickerWidget(data);
 
 const articleFilter = new ArticleFilter(state, data, {
     pagerWidget: pagerWidget,
@@ -66,6 +69,8 @@ countrySelectWidget.on('countryselectwidget.select', payload => {
     articleFilter.filterArticles();
 })
 
+//TODO: Filter articles on date range change
+
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))
 pagerWidget.on('pagerwidget.page', payload => analytics.logEvent('search', 'pagerwidget.page'))
@@ -74,6 +79,6 @@ countrySelectWidget.on('countryselectwidget.select', payload => analytics.logEve
 feedbackWidget.on('feedbackwidget.thumbsdown', payload => analytics.logEvent('feedback', 'feedbackwidget.thumbsdown'))
 feedbackWidget.on('feedbackwidget.thumbsup', payload => analytics.logEvent('feedback', 'feedbackwidget.thumbsup'))
 feedbackWidget.on('feedbackwidget.dismiss', payload => analytics.logEvent('feedback', 'feedbackwidget.dismiss'))
-
+//TODO: Analytics for date range picker
 
 articleFilter.filterArticles();
