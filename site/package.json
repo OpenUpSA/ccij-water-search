@@ -17,6 +17,8 @@
     "clean-files": "cp dist/js*.js dist/index.js; cp dist/js*.js.map dist/index.js.map;"
   },
   "dependencies": {
-    "lunr": "^2.3.8"
+    "jquery": "^3.6.1",
+    "lunr": "^2.3.8",
+    "moment": "^2.29.4"
   }
 }
