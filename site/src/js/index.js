@@ -21,7 +21,6 @@ const state = {
     date_ranges:null,
 }
 
-
 const analytics = new Analytics('UA-44046318-6');
 const searchEngine = new Search(data);
 const pagerWidget = new PagerWidget();
@@ -69,7 +68,10 @@ countrySelectWidget.on('countryselectwidget.select', payload => {
     articleFilter.filterArticles();
 })
 
-//TODO: Filter articles on date range change
+dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", payload => {
+    state.date_ranges = payload
+    articleFilter.filterArticles();
+})
 
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))
