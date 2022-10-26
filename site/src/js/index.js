@@ -1,12 +1,11 @@
 import data from '../data/africa_db.json'
-import lottie from '../documents/lottieflow-scrolling-05-2-66aaf8-easey.json';
-
 import PagerWidget from './widgets/pager_widget';
 import SearchWidget from './widgets/search_widget';
 import CountrySelectWidget from './widgets/country_select_widget';
 import ArticleDisplayWidget from './widgets/article_display_widget';
 import FeedbackWidget from './widgets/feedback_widget';
 import DateRangePickerWidget from './widgets/date_picker_widget';
+import TagsGroupWidget from './widgets/tags_group_widget';
 
 import Analytics from './analytics';
 import Search from './search';
@@ -30,6 +29,7 @@ const countrySelectWidget = new CountrySelectWidget(data);
 const feedbackWidget = new FeedbackWidget();
 const articleDisplayWidget = new ArticleDisplayWidget(pageSize);
 const dateRangePickerWidget = new DateRangePickerWidget(data);
+const tagsGroupWidget = new TagsGroupWidget(state);
 
 const articleFilter = new ArticleFilter(state, data, {
     pagerWidget: pagerWidget,
@@ -70,37 +70,21 @@ countrySelectWidget.on('countryselectwidget.select', payload => {
 })
 
 dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", payload => {
-    state.date_ranges = payload
+    state.date_ranges = payload;
     articleFilter.filterArticles();
 })
 
 document.querySelector("#cancel-date-range").addEventListener("click", () => {
-    state.date_ranges = null
-    dateRangePickerWidget.resetRange()
+    state.date_ranges = null;
+    dateRangePickerWidget.resetRange();
     articleFilter.filterArticles();
 })
 
-// tags
+tagsGroupWidget.on("tagsGroupWidget.change", payload => {
+    state.tag=payload.tag;
+    articleFilter.filterArticles();
 
-function getTopic(button){
-    return button.querySelector(".filter-button__label").innerText
-}
-
-const buttons = document.querySelectorAll('.filter-button')
-
-buttons.forEach(button => {
-    button.addEventListener('click', function(){
-        buttons.forEach(btn => {
-            button == btn ? 
-            button.classList.toggle('active') : 
-            btn.classList.remove('active')
-        })
-
-        state.tag = button.classList.contains('active') ? getTopic(button) : "" 
-
-        articleFilter.filterArticles()
-    });
-});
+})
 
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))
