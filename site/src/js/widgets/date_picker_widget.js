@@ -29,7 +29,10 @@ export default class DateRangePickerWidget extends Observable {
         return moment(a.publish_date).isBefore(b.publish_date)? -1: 1
     })
   }
-
+  /**
+  * 
+  * @param {[]} data 
+  */
   extractDates(data) {
     const articlesWithDates = this.#filterArticlesWithNullPublishDate(data)
     const sortedArticles = this.#sortArticlesByIncreasingDate(articlesWithDates)
@@ -90,6 +93,9 @@ export default class DateRangePickerWidget extends Observable {
         this.triggerEvent("dateRangePickerWidget.rangeChange",{ start: moment(start).toDate(), end: moment(end).toDate()})
       }
     );
+    $("#cancel-date-range").on("click", () => {
+        this.triggerEvent("dateRangePickerWidget.clearChange",{});
+    });
 
     this.resetRange()
   }
