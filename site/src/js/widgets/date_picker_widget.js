@@ -42,20 +42,23 @@ export default class DateRangePickerWidget extends Observable {
   }
 
   prepareDOM() {
-      this.setupWidget();
+    this.setupWidget();
+  }
+
+  resetRange(){
+    $('#date-range-filter').val("Pick a date");
   }
 
   setupWidget() {
     const [first, last] = this.getDateRange()
 
     $('#date-range-filter').daterangepicker({
-        alwaysShowCalendars:true,
-        autoUpdateInput:true,
-        drops:"down",
+        alwaysShowCalendars: true,
+        autoUpdateInput: true,
+        drops: "down",
         endDate: moment(last).format('MM/DD/YYYY'),
-        linkedCalendars:false,
+        linkedCalendars: false,
         locale:{
-          
           direction: 'rtl',
             format: 'MM/DD/YYYY',
             separator: ' - ',
@@ -66,13 +69,12 @@ export default class DateRangePickerWidget extends Observable {
             customRangeLabel: 'Custom',
             daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
             monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            firstDay: 1
-                  
+            firstDay: 1      
         },
         maxYear: moment(last).year(),
         minYear: moment(first).year(),
-        opens:"right",
-        ranges:{
+        opens: "right",
+        ranges: {
           'Today': [moment(), moment()],
           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
@@ -80,16 +82,15 @@ export default class DateRangePickerWidget extends Observable {
           'This Month': [moment().startOf('month'), moment().endOf('month')],
           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
         },
-        showDropdowns:true,
-        showCustomRangeLabel:true,
-        startDate: moment(first).format('MM/DD/YYYY'),
+        showDropdowns: true,
+        showCustomRangeLabel: true,
+        startDate: moment(last).subtract(1, "month").format('MM/DD/YYYY'),
       }, 
       (start, end, label) => {
         this.triggerEvent("dateRangePickerWidget.rangeChange",{ start: moment(start).toDate(), end: moment(end).toDate()})
       }
     );
 
-    $('#date-range-filter').val("Pick a date");
-
+    this.resetRange()
   }
 }

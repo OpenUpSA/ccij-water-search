@@ -73,6 +73,12 @@ dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", payload => {
     articleFilter.filterArticles();
 })
 
+document.querySelector("#cancel-date-range").addEventListener("click", () => {
+    state.date_ranges = null
+    dateRangePickerWidget.resetRange()
+    articleFilter.filterArticles();
+})
+
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))
 pagerWidget.on('pagerwidget.page', payload => analytics.logEvent('search', 'pagerwidget.page'))
