@@ -16,9 +16,10 @@ const pageSize = 18;
 
 const state = {
     country: null,
-    query: "",
+    date_ranges: null,
     pager: null,
-    date_ranges:null,
+    query: "",
+    tag: "",
 }
 
 const analytics = new Analytics('UA-44046318-6');
@@ -78,6 +79,28 @@ document.querySelector("#cancel-date-range").addEventListener("click", () => {
     dateRangePickerWidget.resetRange()
     articleFilter.filterArticles();
 })
+
+// tags
+
+function getTopic(button){
+    return button.querySelector(".filter-button__label").innerText
+}
+
+const buttons = document.querySelectorAll('.filter-button')
+
+buttons.forEach(button => {
+    button.addEventListener('click', function(){
+        buttons.forEach(btn => {
+            button == btn ? 
+            button.classList.toggle('active') : 
+            btn.classList.remove('active')
+        })
+
+        state.tag = button.classList.contains('active') ? getTopic(button) : "" 
+
+        articleFilter.filterArticles()
+    });
+});
 
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))

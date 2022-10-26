@@ -92,6 +92,8 @@
   </div>
   <div class="section section--bg section--last">
     <div class="container">
+      
+      <!-- Country Dropdown -->
       <div class="filters__wrapper">
         <div id="w-node-a7d02a662996-ab510243" class="filter__wrapper">
           <div class="search-label">Filter by country:</div>
@@ -106,31 +108,90 @@
               </div>
             </nav>
           </div>
-
         </div>
-        <!-- Date Range Picker-->
+
+        <!-- Date Range Picker -->
         <div class="filter__wrapper date-range__wrapper">
             <div class="search-label">Filter by date:</div>
             <input type="text" id="date-range-filter" value="Pick a date"/>
             <div id="cancel-date-range" class="fa fa-times"></div>
         </div>
-        <!-- <div id="w-node-9aec25cb5fe8-ab510243" class="filter__wrapper">
+
+        <!-- Tags -->
+        <div id="w-node-9aec25cb5fe8-ab510243" class="filter__wrapper">
           <div class="search-label">Filter by topic:</div>
           <div class="filter-button__wrapper">
             <a href="#" class="filter-button w-inline-block">
-              <div class="filter-button__label">Topic filter</div>
-              <div class="filter-button__close active">
+              <div class="filter-button__label">Water Sanitation</div>
+              <div class="filter-button__close">
                 <div class="fa fa-times"></div>
               </div>
             </a>
-            <a href="#" class="filter-button active w-inline-block">
-              <div class="filter-button__label">Topic filter active</div>
-              <div class="filter-button__close active">
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Water Supply</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Water Security</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Wastewater</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Water Treatment</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Natural Disaster</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Urban Water</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Waterborne Diseases</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Rural Water</div>
+              <div class="filter-button__close">
+                <div class="fa fa-times"></div>
+              </div>
+            </a>
+            
+            <a href="#" class="filter-button w-inline-block">
+              <div class="filter-button__label">Water Pricing</div>
+              <div class="filter-button__close">
                 <div class="fa fa-times"></div>
               </div>
             </a>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="articles-loading__wrapper">
         <div class="article-loading">
@@ -262,20 +323,6 @@ border-radius:3px;
 	overflow-x: hidden
 }
 </style>
-  <script>
-document.addEventListener('DOMContentLoaded', ()=>{
- document.querySelectorAll('.filter-button').forEach(trigger => {
-  trigger.addEventListener('click', function(){
-    this.x = ((this.x || 0) + 1)%2;
-    if(this.x){
-      document.querySelectorAll('.filter-button').forEach(target => target.classList.add('active'));
-    }
-    else{
-      document.querySelectorAll('.filter-button').forEach(target => target.classList.remove('active'));
-    }
-  });
- });
-});
-</script>
+
 </body>
 </html>
