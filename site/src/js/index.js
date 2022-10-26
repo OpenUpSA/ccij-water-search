@@ -73,12 +73,11 @@ dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", payload => {
     state.date_ranges = payload;
     articleFilter.filterArticles();
 })
-
-document.querySelector("#cancel-date-range").addEventListener("click", () => {
-    state.date_ranges = null;
-    dateRangePickerWidget.resetRange();
+dateRangePickerWidget.on("dateRangePickerWidget.clearChange", payload=>{
+    state.date_ranges = null
+    dateRangePickerWidget.resetRange()
     articleFilter.filterArticles();
-})
+});
 
 tagsGroupWidget.on("tagsGroupWidget.change", payload => {
     state.tag=payload.tag;
