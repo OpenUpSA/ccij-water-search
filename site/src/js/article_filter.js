@@ -10,6 +10,7 @@ export default class ArticleFilter {
     filterArticles() {
         let articles = this.data;
         const state = this.state;
+
         const pagerWidget = this.components.pagerWidget;
         const articleDisplayWidget = this.components.articleDisplayWidget;
         const searchEngine = this.components.searchEngine;
@@ -31,8 +32,8 @@ export default class ArticleFilter {
             }
             return true;
         })
-
-        
+  
+        // filter by date range
         if(state.date_ranges){
             const { start, end } = state.date_ranges
             
@@ -43,6 +44,12 @@ export default class ArticleFilter {
             })
         }
 
+        // filter by tag
+        if(state.tag){
+            articles = articles.filter((article)=> {
+                return article.tags.includes(state.tag)
+            })
+        }
 
         state.pager = new Pager(articles, pageSize);
         state.pager.on("pager.previous", payload => pagerWidget.onPrevious(payload))

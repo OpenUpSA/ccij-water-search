@@ -92,6 +92,8 @@
   </div>
   <div class="section section--bg section--last">
     <div class="container">
+      
+      <!-- Country Dropdown -->
       <div class="filters__wrapper">
         <div id="w-node-a7d02a662996-ab510243" class="filter__wrapper">
           <div class="search-label">Filter by country:</div>
@@ -106,31 +108,22 @@
               </div>
             </nav>
           </div>
-
         </div>
-        <!-- Date Range Picker-->
+
+        <!-- Date Range Picker -->
         <div class="filter__wrapper date-range__wrapper">
             <div class="search-label">Filter by date:</div>
             <input type="text" id="date-range-filter" value="Pick a date"/>
             <div id="cancel-date-range" class="fa fa-times"></div>
         </div>
-        <!-- <div id="w-node-9aec25cb5fe8-ab510243" class="filter__wrapper">
+
+        <!-- Tags -->
+        <div id="w-node-9aec25cb5fe8-ab510243" class="filter__wrapper">
           <div class="search-label">Filter by topic:</div>
-          <div class="filter-button__wrapper">
-            <a href="#" class="filter-button w-inline-block">
-              <div class="filter-button__label">Topic filter</div>
-              <div class="filter-button__close active">
-                <div class="fa fa-times"></div>
-              </div>
-            </a>
-            <a href="#" class="filter-button active w-inline-block">
-              <div class="filter-button__label">Topic filter active</div>
-              <div class="filter-button__close active">
-                <div class="fa fa-times"></div>
-              </div>
-            </a>
+          <div class="filter-button__wrapper" id="filter-tags-group">
+            <!-- Tags are loaded in here -->
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="articles-loading__wrapper">
         <div class="article-loading">
@@ -239,43 +232,38 @@ $('#article-search').submit(function() {
   return false;
 });
 </script>
-  <style>
-/*width*/
-.dropdown-list__inner::-webkit-scrollbar {
-width:6px;
-}
-/*track*/
-.dropdown-list__inner::-webkit-scrollbar-track {
-background:rgba(0, 0, 0, 0);
-border-color:rgb(255, 255, 255);
-}
-/*thumb*/
-.dropdown-list__inner::-webkit-scrollbar-thumb {
-background:rgb(83, 90, 99);
-border-width:4px;
-border-style:none;
-border-color:rgba(255, 255, 255, 0);
-border-radius:3px;
-}
-/*hide horizontal scroll*/
-.dropdown-list__inner {
-	overflow-x: hidden
-}
+<style>
+  /*width*/
+  .dropdown-list__inner::-webkit-scrollbar {
+  width:6px;
+  }
+  /*track*/
+  .dropdown-list__inner::-webkit-scrollbar-track {
+  background:rgba(0, 0, 0, 0);
+  border-color:rgb(255, 255, 255);
+  }
+  /*thumb*/
+  .dropdown-list__inner::-webkit-scrollbar-thumb {
+  background:rgb(83, 90, 99);
+  border-width:4px;
+  border-style:none;
+  border-color:rgba(255, 255, 255, 0);
+  border-radius:3px;
+  }
+  /*hide horizontal scroll*/
+  .dropdown-list__inner {
+    overflow-x: hidden
+  }
+
+  /* filter buttons */
+  .filter-button.active{
+    padding-right:18px ;
+  }
+  .filter-button:hover{
+    padding-bottom: 0px;
+  }
+
 </style>
-  <script>
-document.addEventListener('DOMContentLoaded', ()=>{
- document.querySelectorAll('.filter-button').forEach(trigger => {
-  trigger.addEventListener('click', function(){
-    this.x = ((this.x || 0) + 1)%2;
-    if(this.x){
-      document.querySelectorAll('.filter-button').forEach(target => target.classList.add('active'));
-    }
-    else{
-      document.querySelectorAll('.filter-button').forEach(target => target.classList.remove('active'));
-    }
-  });
- });
-});
-</script>
+
 </body>
 </html>

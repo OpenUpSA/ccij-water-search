@@ -1,12 +1,11 @@
 import data from '../data/africa_db.json'
-import lottie from '../documents/lottieflow-scrolling-05-2-66aaf8-easey.json';
-
 import PagerWidget from './widgets/pager_widget';
 import SearchWidget from './widgets/search_widget';
 import CountrySelectWidget from './widgets/country_select_widget';
 import ArticleDisplayWidget from './widgets/article_display_widget';
 import FeedbackWidget from './widgets/feedback_widget';
 import DateRangePickerWidget from './widgets/date_picker_widget';
+import TagsGroupWidget from './widgets/tags_group_widget';
 
 import Analytics from './analytics';
 import Search from './search';
@@ -16,9 +15,10 @@ const pageSize = 18;
 
 const state = {
     country: null,
-    query: "",
+    date_ranges: null,
     pager: null,
-    date_ranges:null,
+    query: "",
+    tag: "",
 }
 
 const analytics = new Analytics('UA-44046318-6');
@@ -29,6 +29,7 @@ const countrySelectWidget = new CountrySelectWidget(data);
 const feedbackWidget = new FeedbackWidget();
 const articleDisplayWidget = new ArticleDisplayWidget(pageSize);
 const dateRangePickerWidget = new DateRangePickerWidget(data);
+const tagsGroupWidget = new TagsGroupWidget(state);
 
 const articleFilter = new ArticleFilter(state, data, {
     pagerWidget: pagerWidget,
@@ -69,7 +70,7 @@ countrySelectWidget.on('countryselectwidget.select', payload => {
 })
 
 dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", payload => {
-    state.date_ranges = payload
+    state.date_ranges = payload;
     articleFilter.filterArticles();
 })
 dateRangePickerWidget.on("dateRangePickerWidget.clearChange", payload=>{
@@ -77,6 +78,12 @@ dateRangePickerWidget.on("dateRangePickerWidget.clearChange", payload=>{
     dateRangePickerWidget.resetRange()
     articleFilter.filterArticles();
 });
+
+tagsGroupWidget.on("tagsGroupWidget.change", payload => {
+    state.tag=payload.tag;
+    articleFilter.filterArticles();
+
+})
 
 pagerWidget.on('pagerwidget.previous', payload => analytics.logEvent('search', 'pagerwidget.previous'))
 pagerWidget.on('pagerwidget.next', payload => analytics.logEvent('search', 'pagerwidget.next'))
