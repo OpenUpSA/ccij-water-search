@@ -21,8 +21,6 @@ export default class TagsGroupWidget extends Observable {
         this.tags.forEach(tag=>{
             tags_container.html(`${tags_container.html()} <a href="#" class="filter-button w-inline-block">
                                             <div class="filter-button__label">${tag}</div>
-                                            <div class="filter-button__close">
-                                            <div class="fa fa-times"></div>
                                             </div>
                                         </a>`);
 

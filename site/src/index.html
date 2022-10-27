@@ -232,28 +232,37 @@ $('#article-search').submit(function() {
   return false;
 });
 </script>
-  <style>
-/*width*/
-.dropdown-list__inner::-webkit-scrollbar {
-width:6px;
-}
-/*track*/
-.dropdown-list__inner::-webkit-scrollbar-track {
-background:rgba(0, 0, 0, 0);
-border-color:rgb(255, 255, 255);
-}
-/*thumb*/
-.dropdown-list__inner::-webkit-scrollbar-thumb {
-background:rgb(83, 90, 99);
-border-width:4px;
-border-style:none;
-border-color:rgba(255, 255, 255, 0);
-border-radius:3px;
-}
-/*hide horizontal scroll*/
-.dropdown-list__inner {
-	overflow-x: hidden
-}
+<style>
+  /*width*/
+  .dropdown-list__inner::-webkit-scrollbar {
+  width:6px;
+  }
+  /*track*/
+  .dropdown-list__inner::-webkit-scrollbar-track {
+  background:rgba(0, 0, 0, 0);
+  border-color:rgb(255, 255, 255);
+  }
+  /*thumb*/
+  .dropdown-list__inner::-webkit-scrollbar-thumb {
+  background:rgb(83, 90, 99);
+  border-width:4px;
+  border-style:none;
+  border-color:rgba(255, 255, 255, 0);
+  border-radius:3px;
+  }
+  /*hide horizontal scroll*/
+  .dropdown-list__inner {
+    overflow-x: hidden
+  }
+
+  /* filter buttons */
+  .filter-button.active{
+    padding-right:18px ;
+  }
+  .filter-button:hover{
+    padding-bottom: 0px;
+  }
+
 </style>
 
 </body>
