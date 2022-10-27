@@ -61,14 +61,10 @@
       </div>
     </div>
   </div>
-  <div class="section section--hero">
-    <div class="container">
-      <div class="hero-content">
+    <div class="container content">
         <h1 class="hero-title">Methodology</h1>
-      </div>
     </div>
-  </div>
-  <div class="container contnt">
+  <div class="container content">
     <h1>What data source did we use?</h1>
     <p>The news articles about South Africa water-related issues are extracted from two datasets from the GDELT project. <a href="https://www.gdeltproject.org/">GDELT</a> maintains a database of the world's news media in different languages. </p>
     <ol>
@@ -104,7 +100,7 @@
             <br>'WB_2981_DRINKING_WATER_QUALITY_STANDARDS'
         </li>
     </ul>
-    <br>
+    
     <h3>Result</h3>
     <p>The news articles data extracted from GDELT doc2.0 API for the period fromJan 1, 2017 to Apr 14, 2022  includes the following information </p>
     <ul>
@@ -115,7 +111,6 @@
         <li>Domain of the news organization</li>
     </ul>
     <br>
-    <br>
     <h2 class="lighter">Knowledge Graph data</h2>
     <h3>Extraction</h3>
     <p>We extracted knowledge graph data which satisfy the following two criteria:</p>
@@ -123,7 +118,7 @@
         <li>The source of the news article is from a South African media outlet. GDELT maintains a <a href="https://blog.gdeltproject.org/mapping-the-media-a-geographic-lookup-of-gdelts-sources/">dataset</a> of media in each country.</li>
         <li>Instead of focusing on dozens of water-related themes like in the article database, we extracted <a href="https://drive.google.com/file/d/1NUf0FWFk2xF8OysNvcXgtWsmDteunOjJ/view?usp=sharing">191 themes of interest to us</a> related to water, natural disaster, climate change, and other relevant topics. We chose a broad range of themes  for archiving purposes. The extraction process is relatively fast and yields data, so we could easily filter the information we extracted.</li>
     </ul>
-    <br>
+    
     <h3>Result</h3>
     <p>The data extracted from GDELT knowledge graph dataset includes the following information:</p>
     <ul>
@@ -135,9 +130,9 @@
         <li>Domain of the news organization</li>
         <li>URL of the article</li>
     </ul>
-    <p>We didn’t use the person names and organization names in the current data repository. Because of the fact that organization names are usually made of multiple words, it would require us to use a different methodology to implement the search functionality on these names, which we haven’t worked out currently.  <mark class="why-not">WHY NOT?</mark> </p>
+    <p>We didn’t use the person names and organization names in the current data repository. Because of the fact that organization names are usually made of multiple words, it would require us to use a different methodology to implement the search functionality on these names, which we haven’t worked out currently. WHY NOT?</p>
     <br>
-    <br>
+    
     <h2 class="lighter">Merged Articles and Knowledge Graph Data</h2>
     <p>Merging the doc2.0 data with the knowledge graph data using the article URL yielded about 26,000 articles from the two datasets with all of the information mentioned above. Articles are deduplicated based on title.</p>
   </div>
@@ -147,7 +142,7 @@
     <h1>Data Processing and Filtering</h1>
     <h2 class="lighter">Filter by content</h2>
     <p>We found many articles coded with water-related themes in the GDELT database that were not focused on water sanitation, water supply or water security. The article might contain relevant terms, but was not about water issues.  We needed to filter out these irrelevant articles. It’s hard to do that manually because of the volume of articles. As a result, we obtained further information for these articles and then filtered them with OpenAI.</p>
-    <br>
+    
     <h3>Extracting article summaries and keywords</h3>
     <p>We used the Full-text downloader (built with newspaper3k and <a href="https://archive.org/help/wayback_api.php">Wayback Machine</a>) from the <a href="https://github.com/Cyclododecene/newsfeed">newsfeed library</a> to extract more detailed information for each article.</p>
     <br>
@@ -159,16 +154,16 @@
         <li>Authors of each article</li>
 
     </ul>
-    <br>
+    
     <h3>Letting OpenAI decide whether this is an article of our interest</h3>
     <p>We categorized the articles from the two datasets using the criteria listed below.Then we gave the classification task to <a href="https://beta.openai.com/examples/">OpenAI</a>:</p>
     <ul>
         <li>Where the article summary includes the word “Water” in its summary</li>
         <li>Where the article summary doesn’t include the word “Water” in its summary</li>
     </ul>
-    <img src="images/methodology-diagram.png" alt="OpenAI Methodology Diagram" class="open-api-diagram">
+    <center><img src="images/methodology-diagram.png" alt="OpenAI Methodology Diagram" class="open-api-diagram"></center>
     <p>OpenAI charges by word fragments that they call “tokens.” Using title for the first round of classification for articles without the word “water” in its summary helped save on the cost.</p>
-    <br><br>
+    <br>
     <h2 class="lighter">Filter by location</h2>
     <p>Although all of the articles were sourced from South Africa, the collection of articles included reports from all over the world. Since we are only interested in news articles about Africa, we needed to filter out only articles about Africa.</p>
     <br>
@@ -178,16 +173,16 @@
         <li>Select articles with an African country label or “Multiple” label, and filter out all other articles</li>
     </ul>
     <p>This narrowed the collection of stories to about 5,000 water-related articles focused on African countries.</p>
-    <br><br>
+    <br>
     <h2 class="lighter">Adding OpenUp dataset</h2>
     <p>We added a dataset Open Up had collected of 800 water-related articles in Africa that included keywords and country. This led to a total of about 6,000 articles. </p>
-    <br><br>
+    <br>
     <h2 class="lighter">Creating keywords for summary index</h2>
     <ul>
         <li>Location and theme columns are broken down into single words</li>
         <li>These single words are concatenated into one column called “Summary” to make up the search index for our search engine.</li>
     </ul>
-    <br><br>
+    <br>
     <h2 class="lighter">Creating Article tags based on the themes</h2>
     <ul>
         <li>We manually filtered out water-related themes of all the themes of the articles we selected</li>
@@ -210,7 +205,11 @@
 
 
   </div>
-  <div class="container content"></div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 
   <div class="footer">
@@ -234,25 +233,22 @@
 
   <style>
     .hero-title{
+        margin-top: 35px;
+        margin-bottom: 5px;
         text-align: start;
     }
     .container.content{
-        margin-bottom: 50px;
+        margin-bottom: 10px;
         word-wrap: break-word;
         overflow: hidden;
     }
     .lighter{
         font-weight: 200;
     }
-    mark.why-not{
-        background-color: rgb(248, 178, 49);
-        color: rgb(246, 42, 42);
-        font-weight: bolder;
-    }
     .open-api-diagram{
         width: 100%;
         min-width: 200px;
-        max-width: 800px;
+        max-width: 500px;
         aspect-ratio: auto;
         margin: 50px auto;
     }
