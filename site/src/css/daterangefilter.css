@@ -1,0 +1,27 @@
+#date-range-filter{
+    width: 250px;
+    background-color: #535a63;
+    color: #fff;
+    border-radius: 22px;
+    height: 44px;
+    padding: 0px 1.5em;
+    cursor: pointer;
+    border-color: none;
+    border-style: initial;
+}
+
+.date-range__wrapper {
+    position: relative;
+}
+
+#cancel-date-range {
+    position: absolute;
+    left: 225px;
+    bottom: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+#cancel-date-range:hover {
+    color: red;
+}

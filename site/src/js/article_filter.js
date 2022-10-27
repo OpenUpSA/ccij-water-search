@@ -32,6 +32,18 @@ export default class ArticleFilter {
             return true;
         })
 
+        
+        if(state.date_ranges){
+            const { start, end } = state.date_ranges
+            
+            articles = articles.filter((article)=> {
+                if(!article?.publish_date) return false
+
+                return moment(article.publish_date).isSameOrAfter(start) && moment(article.publish_date).isSameOrBefore(end)
+            })
+        }
+
+
         state.pager = new Pager(articles, pageSize);
         state.pager.on("pager.previous", payload => pagerWidget.onPrevious(payload))
         state.pager.on("pager.next", payload => pagerWidget.onNext(payload))
