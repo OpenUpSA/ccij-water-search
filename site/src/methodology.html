@@ -110,7 +110,7 @@
         <li>Image url</li>
         <li>Domain of the news organization</li>
     </ul>
-    <br>
+    
     <h2 class="lighter">Knowledge Graph data</h2>
     <h3>Extraction</h3>
     <p>We extracted knowledge graph data which satisfy the following two criteria:</p>
@@ -131,7 +131,6 @@
         <li>URL of the article</li>
     </ul>
     <p>We didn’t use the person names and organization names in the current data repository. Because of the fact that organization names are usually made of multiple words, it would require us to use a different methodology to implement the search functionality on these names, which we haven’t worked out currently. WHY NOT?</p>
-    <br>
     
     <h2 class="lighter">Merged Articles and Knowledge Graph Data</h2>
     <p>Merging the doc2.0 data with the knowledge graph data using the article URL yielded about 26,000 articles from the two datasets with all of the information mentioned above. Articles are deduplicated based on title.</p>
@@ -145,7 +144,6 @@
     
     <h3>Extracting article summaries and keywords</h3>
     <p>We used the Full-text downloader (built with newspaper3k and <a href="https://archive.org/help/wayback_api.php">Wayback Machine</a>) from the <a href="https://github.com/Cyclododecene/newsfeed">newsfeed library</a> to extract more detailed information for each article.</p>
-    <br>
     <p>These information includes the following elements: </p>
     <ul>
         <li>Article Full text</li>
@@ -166,29 +164,26 @@
     <br>
     <h2 class="lighter">Filter by location</h2>
     <p>Although all of the articles were sourced from South Africa, the collection of articles included reports from all over the world. Since we are only interested in news articles about Africa, we needed to filter out only articles about Africa.</p>
-    <br>
     <p>Because most articles have multiple related locations, we needed to decide the country where the article is based.  We used the most frequently mentioned location in the Location column to determine this. We created a country label for each article based on this process. Where several locations are mentioned the same times, we put “Multiple” as the country label.</p>
-    <br>
     <ul>
         <li>Select articles with an African country label or “Multiple” label, and filter out all other articles</li>
     </ul>
     <p>This narrowed the collection of stories to about 5,000 water-related articles focused on African countries.</p>
-    <br>
+    
     <h2 class="lighter">Adding OpenUp dataset</h2>
     <p>We added a dataset Open Up had collected of 800 water-related articles in Africa that included keywords and country. This led to a total of about 6,000 articles. </p>
-    <br>
+    
     <h2 class="lighter">Creating keywords for summary index</h2>
     <ul>
         <li>Location and theme columns are broken down into single words</li>
         <li>These single words are concatenated into one column called “Summary” to make up the search index for our search engine.</li>
     </ul>
-    <br>
+    
     <h2 class="lighter">Creating Article tags based on the themes</h2>
     <ul>
         <li>We manually filtered out water-related themes of all the themes of the articles we selected</li>
         <li>This allowed us to identify the most frequently occurring themes in the dataset. We further manually brought similar themes together.</li>
     </ul>
-    <br>
     <p>We used this list of 10 water-related themes as tags for each article.</p>
     <ol>
         <li>Water Sanitation</li>
@@ -205,7 +200,6 @@
 
 
   </div>
-  <br>
   <br>
   <br>
   <br>
