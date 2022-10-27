@@ -52,10 +52,10 @@
   </div>
   <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav">
     <div class="container container--nav">
-      <a href="#" class="brand w-nav-brand">
+      <a href="/" class="brand w-nav-brand">
         <h1 class="header-logo"><span class="text--primary">WATER</span> WORLD<span class="text--primary"></span></h1>
       </a>
-      <nav role="navigation" class="nav-menu w-nav-menu"><a href="/" class="nav-link w-nav-link active">Home</a><a href="#" class="nav-link w-nav-link w--current">Methodology</a><a href="#" class="nav-link w-nav-link">Contact</a><a href="#" class="nav-link w-nav-link">Share</a></nav>
+      <nav role="navigation" class="nav-menu w-nav-menu"><a href="#" class="nav-link w-nav-link w--current">Methodology</a><a href="#" class="nav-link w-nav-link">Contact</a><a href="#" class="nav-link w-nav-link">Share</a></nav>
       <div class="menu-button w-nav-button">
         <div class="w-icon-nav-menu"></div>
       </div>
@@ -68,7 +68,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container contnt">
     <h1>What data source did we use?</h1>
     <p>The news articles about South Africa water-related issues are extracted from two datasets from the GDELT project. <a href="https://www.gdeltproject.org/">GDELT</a> maintains a database of the world's news media in different languages. </p>
     <ol>
@@ -79,7 +79,7 @@
 
   </div>
 
-  <div class="container">
+  <div class="container content">
     <h1>How did we extract the data from the data source?</h1>
     <h2 class="lighter">DOC 2.0 API data (Articles data)</h2>
     <h3>Extraction</h3>
@@ -143,7 +143,7 @@
   </div>
 
 
-  <div class="container">
+  <div class="container content">
     <h1>Data Processing and Filtering</h1>
     <h2 class="lighter">Filter by content</h2>
     <p>We found many articles coded with water-related themes in the GDELT database that were not focused on water sanitation, water supply or water security. The article might contain relevant terms, but was not about water issues.  We needed to filter out these irrelevant articles. It’s hard to do that manually because of the volume of articles. As a result, we obtained further information for these articles and then filtered them with OpenAI.</p>
@@ -210,7 +210,7 @@
 
 
   </div>
-  <div class="container"></div>
+  <div class="container content"></div>
 
 
   <div class="footer">
@@ -236,8 +236,10 @@
     .hero-title{
         text-align: start;
     }
-    .container{
+    .container.content{
         margin-bottom: 50px;
+        word-wrap: break-word;
+        overflow: hidden;
     }
     .lighter{
         font-weight: 200;
@@ -246,10 +248,6 @@
         background-color: rgb(248, 178, 49);
         color: rgb(246, 42, 42);
         font-weight: bolder;
-    }
-    .container{
-        word-wrap: break-word;
-        overflow: hidden;
     }
     .open-api-diagram{
         width: 100%;
