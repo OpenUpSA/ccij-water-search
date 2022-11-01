@@ -8,6 +8,7 @@ import TagsGroupWidget from './widgets/tags_group_widget';
 import 'regenerator-runtime/runtime';
 import Analytics from './analytics';
 import ArticleFilter from './article_filter';
+import LoadingSpinnerWidget from './widgets/loading-spinner';
 
 import Api from './api';
 
@@ -30,6 +31,7 @@ const feedbackWidget = new FeedbackWidget();
 const articleDisplayWidget = new ArticleDisplayWidget(pageSize);
 var dateRangePickerWidget = null;
 const tagsGroupWidget = new TagsGroupWidget(state);
+const loadingSpinner= new LoadingSpinnerWidget();
 
 const articleFilter = new ArticleFilter(state, {
     pagerWidget: pagerWidget,
@@ -39,20 +41,25 @@ const articleFilter = new ArticleFilter(state, {
 
 pagerWidget.on('pagerwidget.previous', async payload => {
     if (state.pager) {
-        state.pager.previous()
+        state.pager.previous();
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             state.pager.data=res.articles;
             articleDisplayWidget.displayArticles(state.pager); 
+            loadingSpinner.hideSpinner();
         });
     }
 })
 
 pagerWidget.on('pagerwidget.next', async payload => {
     if (state.pager) {
-        state.pager.next()
+        state.pager.next();
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             state.pager.data=res.articles;
-            articleDisplayWidget.displayArticles(state.pager); 
+            articleDisplayWidget.displayArticles(state.pager);  
+            loadingSpinner.hideSpinner();
+            
         });
     }
 })
@@ -60,25 +67,32 @@ pagerWidget.on('pagerwidget.next', async payload => {
 pagerWidget.on('pagerwidget.page', async payload => {
     if (state.pager) {
         state.pager.toPage(payload)
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             state.pager.data=res.articles;
-            articleDisplayWidget.displayArticles(state.pager); 
+            articleDisplayWidget.displayArticles(state.pager);  
+            loadingSpinner.hideSpinner();
+            
         });
     }
 })
 
 searchWidget.on('searchwidget.search', async payload => {
     state.query = payload;
+    loadingSpinner.showSpinner();
     await api.getArticles(state).then(res=>{
         articleFilter.filterArticles(res); 
+        loadingSpinner.hideSpinner();
     });
 })
 
 
 tagsGroupWidget.on("tagsGroupWidget.change", async payload => {
     state.tag=payload.tag;
+    loadingSpinner.showSpinner();
     await api.getArticles(state).then(res=>{
         articleFilter.filterArticles(res); 
+        loadingSpinner.hideSpinner();
     });
 
 });
@@ -86,8 +100,10 @@ tagsGroupWidget.on("tagsGroupWidget.change", async payload => {
 fetchCountries().then(()=>{
     countrySelectWidget.on('countryselectwidget.select', async payload => {
         state.country = payload;
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             articleFilter.filterArticles(res); 
+            loadingSpinner.hideSpinner();
         });
         
     })
@@ -99,15 +115,19 @@ fetchCountries().then(()=>{
 fetchDateRange().then(()=>{
     dateRangePickerWidget.on("dateRangePickerWidget.rangeChange", async payload => {
         state.date_ranges = payload;
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             articleFilter.filterArticles(res); 
+            loadingSpinner.hideSpinner();
         });
     })
     dateRangePickerWidget.on("dateRangePickerWidget.clearChange", async payload=>{
         state.date_ranges = null
         dateRangePickerWidget.resetRange();
+        loadingSpinner.showSpinner();
         await api.getArticles(state).then(res=>{
             articleFilter.filterArticles(res); 
+            loadingSpinner.hideSpinner();
         });
     });
 
@@ -124,8 +144,10 @@ feedbackWidget.on('feedbackwidget.dismiss', payload => analytics.logEvent('feedb
 //TODO: Analytics for date range picker
 
 async function fetchData(){
+    loadingSpinner.showSpinner();
     await api.getArticles(state).then(res=>{
         articleFilter.filterArticles(res); 
+        loadingSpinner.hideSpinner();
     });
 }
 
