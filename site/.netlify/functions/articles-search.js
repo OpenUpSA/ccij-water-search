@@ -2,6 +2,7 @@ var lunr=require("lunr");
 var moment=require("moment");
 var data=require("../../src/data/africa_db.json");
 exports.handler=async function(event, context, callback){
+    console.error(event.queryStringParameters);
 
     var idx = lunr(function () {
         this.ref('id')
@@ -43,6 +44,8 @@ exports.handler=async function(event, context, callback){
     let endDate=event.queryStringParameters.endDate;
 
     if ((startDate!==null && startDate!==undefined) && (endDate!==null && endDate!==undefined) ) {
+        startDate=moment.unix(startDate);
+        endDate=moment.unix(endDate);
         articles = articles.filter((article)=> {
             if(!article?.publish_date) return false
 
@@ -65,7 +68,11 @@ exports.handler=async function(event, context, callback){
     if (pageSize!==null && pageSize!==undefined){
         pager.pageSize=pageSize
     }
-    let articlesInPage=pager.toPage(page);
+    let articlesInPage=pager.first();
+    if (page && page<=pager.numPages) {
+        articlesInPage=pager.toPage(page);
+    }
+    
 
     return {
         statusCode:200,
@@ -87,7 +94,6 @@ class Pager {
         this.data = data;
         this.pageSize = pageSize;
         this._currentPage = 0;
-        this.first()
     }
 
     getPage(pageNo) {

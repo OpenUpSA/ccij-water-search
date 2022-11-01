@@ -4,45 +4,13 @@ export default class DateRangePickerWidget extends Observable {
 
   /**
    * 
-   * @param {[]} data 
+   * @param {[]} date_range 
    */
-    constructor(data) {
+    constructor(date_range) {
         super();
-        this.dates= this.extractDates(data);
+        this.date_range= date_range;
         this.prepareDOM();
     }
-
-  /**
-   * 
-   * @param {[]} data 
-   */
-  #filterArticlesWithNullPublishDate(data){
-    return data.filter((article)=> !!article.publish_date)
-  }
-
-  /**
-  * 
-  * @param {[]} data 
-  */
-  #sortArticlesByIncreasingDate(data){
-    return data.sort((a,b)=> {
-        return moment(a.publish_date).isBefore(b.publish_date)? -1: 1
-    })
-  }
-  /**
-  * 
-  * @param {[]} data 
-  */
-  extractDates(data) {
-    const articlesWithDates = this.#filterArticlesWithNullPublishDate(data)
-    const sortedArticles = this.#sortArticlesByIncreasingDate(articlesWithDates)
-
-    return sortedArticles.map(dt => dt.publish_date)
-  }
-
-  getDateRange(){
-    return [this.dates[0], this.dates[this.dates.length - 1]]
-  }
 
   prepareDOM() {
     this.setupWidget();
@@ -53,7 +21,7 @@ export default class DateRangePickerWidget extends Observable {
   }
 
   setupWidget() {
-    const [first, last] = this.getDateRange()
+    const [first, last] = this.date_range;
 
     $('#date-range-filter').daterangepicker({
         alwaysShowCalendars: true,

@@ -12,3 +12,5 @@ working
 # Local Netlify folder
 
 site/yarn-error.log
+# Local Netlify folder
+.netlify
