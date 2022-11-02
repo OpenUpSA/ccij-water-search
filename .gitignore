@@ -9,8 +9,7 @@ dist
 key
 working
 
-# Local Netlify folder
-
 site/yarn-error.log
-# Local Netlify folder
+
+site/.netlify/state.json
 
