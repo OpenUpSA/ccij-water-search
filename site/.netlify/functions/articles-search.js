@@ -1,19 +1,19 @@
+'use strict';
+
 var lunr=require("lunr");
 var moment=require("moment");
 var data=require("../../src/data/africa_db.json");
 exports.handler=async function(event, context, callback){
-    console.error(event.queryStringParameters);
-
     var idx = lunr(function () {
-        this.ref('id')
-        this.field('summary')
-        this.field('title')
+        this.ref('id');
+        this.field('summary');
+        this.field('title');
 
         data.forEach(function (doc, pos) {
             doc.id = pos;
-            this.add(doc)
-        }, this)
-    })
+            this.add(doc);
+        }, this);
+    });
     var articles=data;
 
     //filter by query
@@ -33,10 +33,10 @@ exports.handler=async function(event, context, callback){
             if (country && country != 'All Countries') {
                 if (el.country == country)
                     return true;
-                return false
+                return false;
             }
             return true;
-        })
+        });
     }
 
     //filter by dates
@@ -47,18 +47,18 @@ exports.handler=async function(event, context, callback){
         startDate=moment.unix(startDate);
         endDate=moment.unix(endDate);
         articles = articles.filter((article)=> {
-            if(!article?.publish_date) return false
+            if(!article?.publish_date) return false;
 
             return moment(article.publish_date).isSameOrAfter(startDate) && moment(article.publish_date).isSameOrBefore(endDate);
-        })
+        });
     }
 
     //filter by tag
     let tag=event.queryStringParameters.tag;
     if (tag!==null && tag!==undefined) {
         articles = articles.filter((article)=> {
-            return article.tags.includes(tag)
-        })
+            return article.tags.includes(tag);
+        });
     }
 
     //get articles in page
@@ -66,7 +66,7 @@ exports.handler=async function(event, context, callback){
     const page=event.queryStringParameters.page;
     const pager=new Pager(data=articles);
     if (pageSize!==null && pageSize!==undefined){
-        pager.pageSize=pageSize
+        pager.pageSize=pageSize;
     }
     let articlesInPage=pager.first();
     if (page && page<=pager.numPages) {
@@ -87,7 +87,7 @@ exports.handler=async function(event, context, callback){
         })
     }
 
-}
+};
 
 class Pager {
     constructor(data, pageSize = 30) {
@@ -114,7 +114,7 @@ class Pager {
         if (page!==null && page !==undefined) {
             this._currentPage = page - 1;
         }
-        return this.page()
+        return this.page();
     }
 
     get numPages() {

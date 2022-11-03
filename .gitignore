@@ -14,3 +14,6 @@ working
 site/yarn-error.log
 # Local Netlify folder
 
+
+# Local Netlify folder
+.netlify
