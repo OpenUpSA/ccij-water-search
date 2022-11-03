@@ -2,19 +2,10 @@ import {Observable} from '../utils'
 
 export default class CountrySelectWidget extends Observable {
 
-    constructor(data) {
+    constructor(countries) {
         super();
-        this.countries = this.extractCountries(data);
+        this.countries = countries;
         this.prepareDOM();
-    }
-
-    extractCountries(data) {
-        const countries = {}
-        data.forEach(el => {
-            countries[el.country] = 1
-        })
-
-        return Object.keys(countries).sort()
     }
 
 

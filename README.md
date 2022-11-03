@@ -16,4 +16,8 @@ The project is split into two directories;
 
 To update client side portions of the static website e.g. to add new UI, pages etc. edit non-data `/site` files .e.g `/site/src/index.html`. 
 
-To run it locally run `yarn start` in the `/site` directory and then go to `http://localhost:1234`
+You need the [netlify CLI](https://docs.netlify.com/cli/get-started/) to run the functions in development.
+
+In the `/site` directory run;
+1. `yarn start`
+2. `netlify dev`

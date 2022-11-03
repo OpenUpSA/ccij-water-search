@@ -1,6 +1,6 @@
 import {Observable} from '../utils'
 
-const delay = 200;
+const delay = 300;
 let timer = null;
 
 export default class SearchWidget extends Observable {
