@@ -2,7 +2,6 @@
   "name": "ccij-water-search",
   "version": "1.0.0",
   "description": "CCIJ Water Search",
-  "main": "index.js",
   "author": "Adi Eyal <adi@openup.org.za>",
   "license": "MIT",
   "devDependencies": {
