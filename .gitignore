@@ -13,3 +13,6 @@ site/yarn-error.log
 
 site/.netlify/state.json
 
+
+# Local Netlify folder
+.netlify

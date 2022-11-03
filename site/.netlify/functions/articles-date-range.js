@@ -1,3 +1,5 @@
+'use strict';
+
 var moment=require("moment");
 var data=require("../../src/data/africa_db.json");
 exports.handler=async function(event, context, callback){
@@ -8,7 +10,7 @@ exports.handler=async function(event, context, callback){
         body:JSON.stringify(dates)
     }
 
-}
+};
   
   
 /**
@@ -16,7 +18,7 @@ exports.handler=async function(event, context, callback){
  * @param {[]} data 
  */
 function filterArticlesWithNullPublishDate(data){
-  return data.filter((article)=> !!article.publish_date)
+  return data.filter((article)=> !!article.publish_date);
 }
 
 /**
@@ -25,7 +27,7 @@ function filterArticlesWithNullPublishDate(data){
 */
 function sortArticlesByIncreasingDate(data){
   return data.sort((a,b)=> {
-      return moment(a.publish_date).isBefore(b.publish_date)? -1: 1
+      return moment(a.publish_date).isBefore(b.publish_date)? -1: 1;
   })
 }
 /**
@@ -33,13 +35,13 @@ function sortArticlesByIncreasingDate(data){
 * @param {[]} data 
 */
 function extractDates(data) {
-  const articlesWithDates = filterArticlesWithNullPublishDate(data)
-  const sortedArticles = sortArticlesByIncreasingDate(articlesWithDates)
-  const dates=new Set(sortedArticles.map(dt => dt.publish_date))
-  return Array.from(dates)
+  const articlesWithDates = filterArticlesWithNullPublishDate(data);
+  const sortedArticles = sortArticlesByIncreasingDate(articlesWithDates);
+  const dates=new Set(sortedArticles.map(dt => dt.publish_date));
+  return Array.from(dates);
 }
 
 function getDateRange(data){
   let dates=extractDates(data);
-  return [dates[0], dates[dates.length - 1]]
+  return [dates[0], dates[dates.length - 1]];
 }
