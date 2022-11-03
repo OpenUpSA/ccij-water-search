@@ -2,9 +2,9 @@
 export default class Api{
     constructor(pageSize){
         this.pageSize=pageSize;
-        this.articles_base_search_url="/.netlify/functions/articles-search/";
-        this.countries_url="/.netlify/functions/countries/";
-        this.date_range_url="/.netlify/functions/articles-date-range/";
+        this.articles_base_search_url="api/articles-search/";
+        this.countries_url="api/countries/";
+        this.date_range_url="api/articles-date-range/";
     }
     async getArticles(state){
         const queryParams={
