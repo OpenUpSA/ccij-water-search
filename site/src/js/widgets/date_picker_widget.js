@@ -21,7 +21,8 @@ export default class DateRangePickerWidget extends Observable {
   }
 
   setupWidget() {
-    const [first, last] = this.date_range;
+    let [first, last] = this.date_range;
+    last=new Date(moment(last).year(),11,31,23,59);
 
     $('#date-range-filter').daterangepicker({
         alwaysShowCalendars: true,
@@ -42,8 +43,8 @@ export default class DateRangePickerWidget extends Observable {
             monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             firstDay: 1      
         },
-        maxYear: moment(last).year(),
-        minYear: moment(first).year(),
+        minDate: moment(first),
+        maxDate: moment(last),
         opens: "right",
         ranges: {
           'Today': [moment(), moment()],
@@ -55,7 +56,7 @@ export default class DateRangePickerWidget extends Observable {
         },
         showDropdowns: true,
         showCustomRangeLabel: true,
-        startDate: moment(last).subtract(1, "month").format('MM/DD/YYYY'),
+        startDate: moment(first).format('MM/DD/YYYY'),
       }, 
       (start, end, label) => {
         this.triggerEvent("dateRangePickerWidget.rangeChange",{ start: moment(start).toDate(), end: moment(end).toDate()})
