@@ -1,0 +1,23 @@
+.hero-title{
+    margin-top: 35px;
+    margin-bottom: 5px;
+    text-align: start;
+}
+.container.content{
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.lighter{
+    font-weight: 200;
+}
+.open-api-diagram{
+    width: 100%;
+    min-width: 200px;
+    max-width: 900px;
+    aspect-ratio: auto;
+    margin: 50px auto;
+}
+.container.content a {
+  color: #408cff;
+}
